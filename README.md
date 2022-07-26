@@ -9,7 +9,7 @@ Sentite libre de forkear/copiar mi codigo, o hacerme una consulta via mail a emi
 
 El proyecto aun no esta terminado, como podras ver en los commits todavia necesito desarrollar el frontend, aunque con respecto al codigo va a ser similar a mi proyecto "todo list" que tambien puedes ver en mis repositorios.
 
-En principio el frontend va a ser realizado en framework React con Redux para manejar el global state de mi app, aunque la idea es tambien poder crear un segundo proyecto que haga peticiones y maneje el estado global de la app mediante Context, para practicar y mejorar mis habilidades.
+El frontend va a ser realizado con React-Context y Semantic UI o Styled Components.
 
 Si sos recruiter y llegaste hasta aca, sentite libre de contactarme via mail emivaccarocosta@gmail.com o via linkedIn https://www.linkedin.com/in/emiliano-vaccaro-costa/ . 
 Sigo buscando oportunidades trainee/jr para desarrollarme en el rubro it como desarrollador web frontend/backend/fullstack. Cualquier critica o consejo tambien es bien recibido. 

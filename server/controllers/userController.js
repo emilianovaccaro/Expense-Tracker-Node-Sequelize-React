@@ -3,35 +3,46 @@ const { User } = require('../models/User');
 
 /* 
 
-  The real question is, do i need a getUser??? I'll just use it when someone logs in.
-  Maybe create an authController.js to login and also use googleIdentity?
+GET USERS IS JUST FOR ADMINS.
 
-  So, the methods i'll give control functions from this file are POST and DELETE.
-  GET Method will be in an auth js file, or login js file, PUT method is not yet required, but in the near future
-  it should be created to update passwords(forgot your password? do this....... .....).
+GET USER WILL BE IN AN AUTH FILE TO LOG IN.
 
 */
 
-const postUser = async ( req, res ) => {
-
-    const { id, name, email, password, role, google } = req.body;
-    const newUser = User.create({
-      id,
-      name,
-      email,
-      password,
-      role,
-      google
+const getUsers = async ( req, res ) => {
+  const user = req.user;
+  try{
+    const users = await User.findAll({
+      attributes: [ "id", "name", "email", "google" ],
+      order: [["id", "DESC"]],
     });
+
+    res.json(users);
+  }
+  catch( err ) {
+    return res.status(500).json({ message: error.message })
+  }
+}
+
+const postUser = async ( req, res ) => {
+  const { id, name, email, password, role, google } = req.body;
+  const newUser = User.create({
+    id,
+    name,
+    email,
+    password,
+    role,
+    google
+  });
 
     // Hash password
-    const salt = bcryptjs.genSaltSync();
-    newUser.password = bcryptjs.hashSync( password, salt );
+  const salt = bcryptjs.genSaltSync();
+  newUser.password = bcryptjs.hashSync( password, salt );
 
-    await newUser.save();    
-    res.json({
-      newUser
-    });
+  await newUser.save();    
+  res.json({
+    newUser
+  });
 }
 
 
@@ -54,5 +65,6 @@ const deleteUser = async ( req, res ) => {
 
 module.exports = {
   postUser,
-  deleteUser
+  deleteUser,
+  getUsers
 }

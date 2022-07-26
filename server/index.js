@@ -6,6 +6,7 @@ const { sequelize } = require('./db/database');
 //routes
 const { transactionRoutes } = require('./routes/transactionRoutes');
 const { userRoutes } = require('./routes/userRoutes');
+const { authRoutes } = require('./routes/authRouter');
 
 
 
@@ -16,8 +17,9 @@ app.use(cors());
 app.use(express.json());
 
 
-app.use("/api/user", userRoutes);
-app.use("/api/transaction", transactionRoutes);
+app.use("/api/user", userRoutes );
+app.use("/api/auth", authRoutes );
+app.use("/api/transaction", transactionRoutes );
 
 
 
